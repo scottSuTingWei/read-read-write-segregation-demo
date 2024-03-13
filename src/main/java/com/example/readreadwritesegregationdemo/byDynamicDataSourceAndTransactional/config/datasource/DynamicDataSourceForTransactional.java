@@ -24,7 +24,5 @@ public class DynamicDataSourceForTransactional extends AbstractRoutingDataSource
         return TransactionSynchronizationManager.isCurrentTransactionReadOnly()
                 ? DataSourceType.REPLICATION
                 : DataSourceType.PRIMARY;
-    }
-
-    
+    }  
 }

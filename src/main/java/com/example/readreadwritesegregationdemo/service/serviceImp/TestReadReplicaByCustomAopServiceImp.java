@@ -9,7 +9,7 @@ import com.example.readreadwritesegregationdemo.db.entity.Users;
 import com.example.readreadwritesegregationdemo.db.primary.dao.UsersRepository;
 import com.example.readreadwritesegregationdemo.service.TestReadReplicaByCustomAopService;
 
-
+// AOPを開けるため、カスタムのアノテーションを設置する。
 @DataSource
 @Service
 public class TestReadReplicaByCustomAopServiceImp implements TestReadReplicaByCustomAopService{
@@ -20,7 +20,7 @@ public class TestReadReplicaByCustomAopServiceImp implements TestReadReplicaByCu
         this.usersRepository = usersRepository;
     }
 
-    // method名はspring.datasource.replica.patternにマッチするので、リードレプリカ DBに接続する。
+    // method名はspring.datasource.replica.patternにマッチするので、リードレプリカDBに接続する。
     @Override
     public Users findByUserId(int userId) {
         return usersRepository.findById(userId).orElse(null);

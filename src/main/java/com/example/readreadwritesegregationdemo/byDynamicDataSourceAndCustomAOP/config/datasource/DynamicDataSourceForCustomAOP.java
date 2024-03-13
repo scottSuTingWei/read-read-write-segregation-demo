@@ -4,13 +4,16 @@ import java.util.Map;
 
 import javax.sql.DataSource;
 
-import com.example.readreadwritesegregationdemo.byDynamicDataSourceAndTransactional.config.datasource.DynamicDataSourceForTransactional;
+import org.springframework.jdbc.datasource.lookup.AbstractRoutingDataSource;
 
 
-public class DynamicDataSourceForCustomAOP extends DynamicDataSourceForTransactional{
+
+public class DynamicDataSourceForCustomAOP extends AbstractRoutingDataSource {
 
     public DynamicDataSourceForCustomAOP(DataSource primaryDataSource, Map<Object, Object> targetDataSources) {
-        super(primaryDataSource, targetDataSources);
+        super.setDefaultTargetDataSource(primaryDataSource);
+        super.setTargetDataSources(targetDataSources);
+        super.afterPropertiesSet();
     }
     
     @Override

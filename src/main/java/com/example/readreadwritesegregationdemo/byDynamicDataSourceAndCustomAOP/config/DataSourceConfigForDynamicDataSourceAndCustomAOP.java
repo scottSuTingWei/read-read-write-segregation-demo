@@ -11,9 +11,6 @@ import org.springframework.boot.jdbc.DataSourceBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
-import org.springframework.jdbc.datasource.DataSourceTransactionManager;
-import org.springframework.jdbc.datasource.LazyConnectionDataSourceProxy;
-import org.springframework.transaction.PlatformTransactionManager;
 
 import com.example.readreadwritesegregationdemo.byDynamicDataSourceAndCustomAOP.config.datasource.DynamicDataSourceForCustomAOP;
 import com.example.readreadwritesegregationdemo.byDynamicDataSourceAndTransactional.config.datasource.DynamicDataSourceForTransactional;
@@ -22,7 +19,7 @@ import com.example.readreadwritesegregationdemo.byDynamicDataSourceAndTransactio
 /**
  * DataSourceConfigForDynamicDataSourceAndCustomAOP
  */
-@Configuration
+// @Configuration
 public class DataSourceConfigForDynamicDataSourceAndCustomAOP {
     
     // primaryDataSource Primary用DBエンドポイントのDataSource
@@ -54,7 +51,7 @@ public class DataSourceConfigForDynamicDataSourceAndCustomAOP {
         Map<Object, Object> targetDataSources = new HashMap<>();
         targetDataSources.put(DataSourceType.PRIMARY, primaryDataSource);
         targetDataSources.put(DataSourceType.REPLICATION, replicationDataSource);
-        DynamicDataSourceForTransactional dynamicDataSource = new DynamicDataSourceForCustomAOP(primaryDataSource, targetDataSources);
+        DynamicDataSourceForCustomAOP dynamicDataSource = new DynamicDataSourceForCustomAOP(primaryDataSource, targetDataSources);
         return dynamicDataSource;
     }
 }
