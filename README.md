@@ -53,8 +53,8 @@ CREATE TABLE IF NOT EXISTS users ( id INT AUTO_INCREMENT PRIMARY KEY, name VARCH
        
 3. postmanでリクエストします。
     ```
-    http://localhost:8080/separateByAOP/readFromReplica
-    http://localhost:8080/separateByAOP/updateToPrimary
+    http://localhost:8080/separateByTransactional/readFromReplica
+    http://localhost:8080/separateByTransactional/updateToPrimary
     ```
 ---
 ### ケース2. DynamicDataSoruce + Custom AOP
